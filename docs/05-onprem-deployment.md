@@ -5,8 +5,8 @@
 ## Servicios (Docker Compose, referencial)
 | Servicio | Imagen / origen | Notas |
 |---|---|---|
-| `parkhub` | Compose upstream de `nash87/parkhub-php` (+ `mysql`) **o** `nash87/parkhub-rust` (binario con redb) | Uno de los dos |
-| `odoo` | `odoo:17` o versión elegida (Community) | Versión según módulo DTE (ver 03) |
+| `parkhub` | Compose upstream de `nash87/parkhub-php` (+ `mysql`); alternativa `nash87/parkhub-rust` | PHP para PoC1 |
+| `odoo` | `odoo:17` (Community) + addon `l10n_cl_fe` 17.0 | Fijado a 17.0 por el módulo DTE (ver 03) |
 | `postgres` | `postgres:16` | Odoo + outbox de la capa |
 | `integration` | Imagen propia FastAPI (repo aparte) | API, workers outbox, panel sync, conector ZK |
 | `queue` | Tabla outbox en PostgreSQL (recomendado) o Redis/RabbitMQ | Outbox transaccional evita perder eventos |
@@ -19,7 +19,7 @@ Todos con `restart: unless-stopped` y healthchecks.
 services:
   postgres: { image: postgres:16, restart: unless-stopped, volumes: [pg:/var/lib/postgresql/data] }
   odoo:     { image: odoo:17, restart: unless-stopped, depends_on: [postgres] }
-  parkhub:  { build: ./upstream/parkhub-rust, restart: unless-stopped }
+  parkhub:  { build: ./upstream/parkhub-php, restart: unless-stopped }
   integration: { image: local/integration:latest, restart: unless-stopped, depends_on: [postgres] }
   proxy:    { image: caddy:2, restart: unless-stopped, ports: ["443:443"] }
 volumes: { pg: {} }
@@ -59,3 +59,6 @@ PaaS auto-hospedado con UI para desplegar los mismos Compose. Útil si el instal
 - Firewall: solo 443 hacia usuarios; VLAN ZK aislada; sin puertos de admin expuestos a internet.
 - Usuarios nominativos, mínimo privilegio; **2FA en Odoo** (TOTP disponible en Community — confirmar en versión elegida) y TOTP en ParkHub.
 - Secretos en `.env` fuera del repo; rotación de credenciales Salesforce/Transbank.
+
+## Repo público
+Este repo es público: **nunca** publiques aquí IPs, hostnames, credenciales, números de serie de paneles ZK ni datos del cliente. Usa placeholders (`<IP_SERVIDOR>`, `<SERIAL_PANEL>`) y guarda los valores reales fuera del repo.

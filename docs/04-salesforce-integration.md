@@ -39,3 +39,6 @@
 Implicancia: 5 MB alcanza para pocos miles de registros → no enviar eventos de cada estadía; enviar solo agregados (cuentas, leads, oportunidades, resúmenes).
 
 Fuentes: https://developer.salesforce.com/docs/atlas.en-us.salesforce_app_limits_cheatsheet.meta/salesforce_app_limits_cheatsheet/salesforce_app_limits_platform_api.htm · https://help.salesforce.com/s/articleView?id=000391959&language=en_US&type=1
+
+## Datos en el repo público
+No se publican aquí IDs de org, usuarios, tokens ni datos reales de leads o cuentas. Solo nombres de objetos y campos genéricos.

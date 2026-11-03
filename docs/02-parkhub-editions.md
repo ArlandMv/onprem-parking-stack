@@ -37,7 +37,7 @@ Ambas dicen compartir el mismo modelo de producto y superficie REST ("feature-eq
 ## Cuándo elegir cada una
 - **PHP:** el equipo maneja Laravel, se quiere MySQL/PostgreSQL estándar, backups SQL conocidos, más fácil de extender.
 - **Rust:** servidor único y pequeño (incluso Raspberry Pi según README), menos piezas, arranque rápido tras corte de energía. Contra: redb es clave-valor embebido; reportes vía API/CSV.
-- Decisión final después de **PoC1** (concurrencia).
+- **Decisión 2026-11-03: PoC1 parte con ParkHub PHP.** Rust queda como alternativa; decisión final tras PoC1.
 
 ## Despliegue on-prem
 Ver [05](05-onprem-deployment.md). Ambas traen `docker-compose.yml` en su repo. Coolify opcional.

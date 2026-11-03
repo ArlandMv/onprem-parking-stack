@@ -7,6 +7,12 @@ OWNER="${OWNER:?define OWNER}"
 REPO="${REPO:-onprem-parking-stack}"
 FULL="$OWNER/$REPO"
 
+# 0. Repo PÚBLICO (decisión 2026-11-03). Crear si no existe (descomentar):
+# gh repo create "$FULL" --public --license mit --description "Gestión y documentación de onprem-parking-stack (sin código, sin datos de clientes)"
+vis=$(gh repo view "$FULL" --json visibility -q .visibility)
+[ "$vis" = "PUBLIC" ] || { echo "Se esperaba repo PUBLIC, es $vis"; exit 1; }
+echo "AVISO: repo público. No crear issues con datos del cliente, IPs ni números de serie."
+
 # 1. Labels desde .github/labels.yml (crea o actualiza)
 count=$(yq 'length' .github/labels.yml)
 for i in $(seq 0 $((count - 1))); do
@@ -47,5 +53,10 @@ gh project field-create "$PROJECT_NUMBER" --owner "$OWNER" --name "Metric" --dat
 # gh issue create --repo "$FULL" --title "[HU] ..." --body-file backlog/hu-01.md \
 #   --label "type:feature,role:Fullstack,sprint:s1" --milestone S1
 # gh project item-add "$PROJECT_NUMBER" --owner "$OWNER" --url <issue_url>
+
+# 7. Historia del libro de deudas local (borrador en backlog-drafts/):
+gh issue create --repo "$FULL" --title "[HU] Libro de deudas local para salidas sin pago durante cortes" \
+  --body-file backlog-drafts/hu-libro-deudas-local.md \
+  --label "type:feature,area:backend,area:sync,offline,role:Fullstack,priority:p1"
 
 echo "Listo. Revisa vistas y opciones de Status en la UI del Project."

@@ -21,6 +21,8 @@ La salida es lenta: hay que validar boletas a mano, calcular cuánto cobrar y ab
 | Rechazo de reserva | Cuando se supera capacidad + buffer + 1 | — |
 | Boleta del food court | **No genera DTE** (solo sirve de comprobante para el descuento) | — |
 | Cobro de estacionamiento | **Genera DTE** cuando hay cobro | — |
+| Cobro sin Webpay o sin red | Efectivo, o salida con deuda que se cobra en la próxima visita | Límite de deuda: sí |
+| Emisor de boletas/facturas | El **operador** del estacionamiento | — |
 | Operación sin internet | El edificio opera 100% local; la nube se sincroniza después | — |
 
 ## Resultado norte (R1)

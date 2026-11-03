@@ -13,3 +13,4 @@ Closes #
 - [ ] Se distingue on-prem (ParkHub, Odoo, capa de integración) de cloud (Salesforce).
 - [ ] Lenguaje claro en docs de negocio (00, README).
 - [ ] Links internos funcionan.
+- [ ] **Repo público:** sin nombres, RUT, direcciones, patentes, IPs, hostnames, números de serie, credenciales, CAF/certificados ni capturas con datos del cliente.

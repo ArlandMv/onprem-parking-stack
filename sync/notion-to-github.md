@@ -27,6 +27,7 @@ Lorena **nunca** toca GitHub. Ella escribe en Notion; Arland copia a GitHub cada
 - Todo issue que nace de Lorena lleva `from-lorena`.
 - Notion es la fuente para Lorena; GitHub es la fuente para el equipo técnico. El link en ambos sentidos es obligatorio.
 - Considerar su capacidad (~4 h/semana) al asignar sprint.
+- **El repo GitHub es público:** al copiar desde Notion, quitar nombres, teléfonos, correos, direcciones y cualquier dato del cliente; el detalle queda en Notion (privado) y el issue solo enlaza.
 - No se borra nada en Notion: se marca "Descartado" con el motivo.
 
 ## Plantilla de comentario

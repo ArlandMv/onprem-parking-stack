@@ -17,8 +17,8 @@
 1. **Entrada:** el vehículo llega; ParkHub valida reserva/QR o cupo libre (capacidad + buffer). El panel ZK abre según su whitelist local.
 2. **Boleta:** el usuario presenta la boleta del food court. El validador comprueba monto > umbral y asigna minutos gratis. *Esta boleta no genera DTE.*
 3. **Salida:** se calcula la tarifa = tiempo − minutos gratis.
-4. **Cobro:** si tarifa > 0, se cobra (Webpay o medio local; ver 03 — **a verificar** módulo). Si tarifa = 0, se abre directo.
-5. **DTE:** si hubo cobro, Odoo emite el documento tributario del estacionamiento (o queda en cola si el emisor depende de internet/SII).
+4. **Cobro:** si tarifa > 0 (más deuda previa, si existe), se cobra por Webpay. Si Webpay o la red fallan: **efectivo** o **salida con deuda** registrada en el libro de deudas local. Si tarifa = 0, se abre directo.
+5. **DTE:** si hubo cobro, Odoo (módulo `l10n_cl_fe`, emisor = operador) emite el documento tributario del estacionamiento (o queda en cola si el emisor depende de internet/SII).
 6. **Apertura:** la capa de integración ordena la apertura a ZK (PoC5), con audit log.
 7. **CRM:** el evento agregado (p. ej. cuenta de arrendatario, uso) se encola en outbox hacia Salesforce.
 
@@ -78,3 +78,11 @@ Contexto: en Chile terremotos e incendios cortan telecomunicaciones; los generad
 - **Panel de estado de sync:** pendientes, enviados, fallidos, antigüedad del evento más viejo, último contacto exitoso con cada destino.
 - **SII/DTE offline:** el envío de DTE al SII requiere internet; se encola igual. Plazos legales de envío: **a verificar** con el contador.
 - Métricas de validación en PoC7 ([06](06-poc-plan.md)).
+
+## Libro de deudas local
+Cuando Webpay o la red no están disponibles, el cliente puede pagar en efectivo o **salir con deuda**.
+- Tabla local `debt_ledger(debt_id, plate, parkhub_user_id, amount_clp, stay_id, created_at, reason, booth_operator, status, paid_at, payment_ref)` en el PostgreSQL de la capa de integración.
+- Clave de búsqueda: patente y/o usuario ParkHub. En la siguiente salida la capa suma la deuda a la tarifa.
+- Al volver la sync: cada deuda y su pago se envían a Odoo vía outbox (cuenta por cobrar "Deudas de estacionamiento"), con `debt_id` como clave de idempotencia.
+- Límite configurable de deuda por patente; anulación solo admin, con audit log.
+- Riesgos: ver [07-risks.md](07-risks.md) (R-01, R-02, R-07). Historia: `backlog-drafts/hu-libro-deudas-local.md`.

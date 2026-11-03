@@ -3,6 +3,9 @@ description: Funcionalidad desde la mirada del usuario
 title: "[HU] "
 labels: ["type:feature"]
 body:
+  - type: markdown
+    attributes:
+      value: "⚠️ **Repo público.** No escribas nombres, RUT, direcciones, patentes, IPs, números de serie, credenciales ni capturas con datos del cliente. Usa placeholders."
   - type: textarea
     id: story
     attributes:

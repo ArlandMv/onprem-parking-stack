@@ -3,6 +3,9 @@ description: Campaña o pieza de marketing (normalmente desde Lorena Inbox)
 title: "[MKT] "
 labels: ["type:marketing", "area:marketing", "role:LorenaMarketing"]
 body:
+  - type: markdown
+    attributes:
+      value: "⚠️ **Repo público.** No escribas nombres, RUT, direcciones, patentes, IPs, números de serie, credenciales ni capturas con datos del cliente. Usa placeholders."
   - type: textarea
     id: goal
     attributes:
