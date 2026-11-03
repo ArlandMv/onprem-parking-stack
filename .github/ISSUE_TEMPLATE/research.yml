@@ -1,0 +1,34 @@
+name: Investigación
+description: Pregunta a responder antes de decidir
+title: "[RES] "
+labels: ["type:research"]
+body:
+  - type: textarea
+    id: question
+    attributes:
+      label: Pregunta de investigación
+      placeholder: "Ej.: ¿Qué módulo DTE para Odoo Community usar?"
+    validations:
+      required: true
+  - type: textarea
+    id: sources
+    attributes:
+      label: Fuentes esperadas
+      placeholder: "Repos, docs oficiales, SII, proveedor..."
+  - type: input
+    id: due
+    attributes:
+      label: Fecha límite (AAAA-MM-DD)
+    validations:
+      required: true
+  - type: input
+    id: odd_metric
+    attributes:
+      label: Métrica ODD
+      description: "¿Qué métrica mueve este issue? Ej.: p90 ciclo de salida (R1), % validación 1er intento, eventos perdidos = 0"
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Resultado esperado (decisión, doc o 'a verificar' resuelto)

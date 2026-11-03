@@ -1,0 +1,43 @@
+name: Bug
+description: Algo no funciona como debería
+title: "[BUG] "
+labels: ["type:bug"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Descripción
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Pasos para reproducir
+      placeholder: "1. ...\n2. ...\n3. ..."
+    validations:
+      required: true
+  - type: dropdown
+    id: env
+    attributes:
+      label: Entorno
+      options: ["Piloto (edificio)", "Laboratorio on-prem", "Salesforce Developer Edition (cloud)", "Otro"]
+  - type: checkboxes
+    id: offline
+    attributes:
+      label: Conectividad
+      options:
+        - label: "Ocurrió durante un corte de internet / energía"
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severidad
+      options: ["S1 - barrera/cobro detenido", "S2 - degradado con workaround", "S3 - menor"]
+    validations:
+      required: true
+  - type: input
+    id: odd_metric
+    attributes:
+      label: Métrica ODD
+      description: "¿Qué métrica mueve este issue? Ej.: p90 ciclo de salida (R1), % validación 1er intento, eventos perdidos = 0"
+    validations:
+      required: true

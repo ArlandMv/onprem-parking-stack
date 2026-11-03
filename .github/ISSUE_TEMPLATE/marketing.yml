@@ -1,0 +1,36 @@
+name: Marketing
+description: Campaña o pieza de marketing (normalmente desde Lorena Inbox)
+title: "[MKT] "
+labels: ["type:marketing", "area:marketing", "role:LorenaMarketing"]
+body:
+  - type: textarea
+    id: goal
+    attributes:
+      label: Objetivo de la campaña
+    validations:
+      required: true
+  - type: input
+    id: odd_metric
+    attributes:
+      label: Métrica ODD
+      description: "¿Qué métrica mueve este issue? Ej.: p90 ciclo de salida (R1), % validación 1er intento, eventos perdidos = 0"
+    validations:
+      required: true
+  - type: dropdown
+    id: sprint
+    attributes:
+      label: Sprint
+      options: ["S1", "S2", "S3", "Sin asignar"]
+    validations:
+      required: true
+  - type: input
+    id: notion
+    attributes:
+      label: Enlace a Notion (Lorena Inbox)
+      placeholder: "https://www.notion.so/..."
+  - type: checkboxes
+    id: origin
+    attributes:
+      label: Origen
+      options:
+        - label: "Viene de Lorena (agregar label from-lorena)"

@@ -1,0 +1,47 @@
+# Labels como código. Aplicar con scripts/gh-bootstrap.sh o una action de sincronización de labels.
+# Roles
+- name: "role:Fullstack"
+  color: "1f6feb"
+  description: "Responsable: Fullstack (Arland)"
+- name: "role:LorenaMarketing"
+  color: "ff69b4"
+  description: "Responsable: Lorena (marketing, vía Notion)"
+- name: "role:QA"
+  color: "2da44e"
+  description: "Responsable: QA"
+- name: "role:SalesforceDeveloper"
+  color: "8250df"
+  description: "Responsable: Salesforce Developer"
+- name: "role:IntegrationAutomationArchitect"
+  color: "fb8500"
+  description: "Responsable: Integration & Automation Architect"
+# Tipo
+- { name: "type:feature", color: "a2eeef", description: "Nueva funcionalidad" }
+- { name: "type:research", color: "d4c5f9", description: "Investigación / spike" }
+- { name: "type:chore", color: "cfd3d7", description: "Tarea operativa" }
+- { name: "type:marketing", color: "f9a8d4", description: "Tarea de marketing" }
+- { name: "type:integration", color: "fbca04", description: "Integración entre sistemas" }
+- { name: "type:bug", color: "d73a4a", description: "Error" }
+# Área
+- { name: "area:hardware", color: "5319e7", description: "ZK: barreras, cámaras, paneles" }
+- { name: "area:backend", color: "0e8a16", description: "ParkHub / capa de integración" }
+- { name: "area:frontend", color: "c2e0c6", description: "UI web / app" }
+- { name: "area:erp", color: "714b67", description: "Odoo Community" }
+- { name: "area:crm", color: "00a1e0", description: "Salesforce (cloud, demo)" }
+- { name: "area:marketing", color: "e99695", description: "Landing, contenidos" }
+- { name: "area:deployment", color: "006b75", description: "Despliegue on-prem" }
+- { name: "area:sync", color: "0052cc", description: "Outbox, sincronización diferida" }
+- { name: "offline", color: "333333", description: "Comportamiento sin internet / corte" }
+# Sprint
+- { name: "sprint:s1", color: "bfdadc", description: "Sprint 1" }
+- { name: "sprint:s2", color: "9fc5c8", description: "Sprint 2" }
+- { name: "sprint:s3", color: "7fb0b4", description: "Sprint 3" }
+# Prioridad
+- { name: "priority:p0", color: "b60205", description: "Crítico" }
+- { name: "priority:p1", color: "d93f0b", description: "Alto" }
+- { name: "priority:p2", color: "fef2c0", description: "Normal" }
+# Estado especial
+- { name: "blocked", color: "000000", description: "Bloqueado" }
+- { name: "needs-clarification", color: "fbca04", description: "Falta información" }
+- { name: "from-lorena", color: "f472b6", description: "Nace del Lorena Inbox (Notion)" }
+- { name: "salesforce-demo", color: "00a1e0", description: "Demo cloud, no producción" }
